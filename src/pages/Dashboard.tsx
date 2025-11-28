@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Card, CardContent, CardActions, Typography, Button } from "@mui/material";
+import { Box, Card, CardContent, CardActions, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const products = [
@@ -14,9 +14,9 @@ const Dashboard: React.FC = () => {
       <Typography variant="h4" gutterBottom>
         Dashboard
       </Typography>
-      <Grid container spacing={3}>
+      <Box className="dashboard-grid">
         {products.map((p) => (
-          <Grid item xs={12} md={4} key={p.id}>
+          <Box key={p.id}>
             <Card>
               <CardContent>
                 <Typography variant="h6">{p.name}</Typography>
@@ -30,9 +30,9 @@ const Dashboard: React.FC = () => {
                 </Button>
               </CardActions>
             </Card>
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </>
   );
 };

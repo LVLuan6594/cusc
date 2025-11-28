@@ -11,6 +11,7 @@ import {
   Box,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import logoCusc from "../asset/img/logo_cusc.jpg";
 import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
@@ -18,7 +19,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <AppBar position="sticky">
+      <AppBar position="sticky" className="main-appbar">
         <Toolbar>
           <IconButton
             edge="start"
@@ -29,9 +30,33 @@ const Navbar: React.FC = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div">
-            CUSC Company
-          </Typography>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            {/* Inline SVG logo to avoid external asset issues */}
+              <Box
+                className="main-logo"
+                component="span"
+                sx={{ display: "inline-flex", alignItems: "center" }}
+              >
+                <img
+                  src={logoCusc}
+                  srcSet={`${logoCusc} 1x`}
+                  alt="CUSC Logo"
+                  className="main-logo-img"
+                  width={220}
+                  height={220}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => (window.location.href = "/")}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") window.location.href = "/src/pages/Home.tsx";
+                  }}
+                  style={{ borderRadius: 8, objectFit: "contain", cursor: "pointer" }}
+                />
+              </Box>
+            {/* <Typography variant="h4" component="div" sx={{ fontWeight: 700 }}>
+              CUSC
+            </Typography> */}
+          </Box>
         </Toolbar>
       </AppBar>
 
